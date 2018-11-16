@@ -132,25 +132,6 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover{
 .botaoIndex{
     padding-top: 10px;
 }
-
-.rank{
-    color:black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 95%;
-    width: 100%;
-    text-align:left;   
-}
-.rankImg{
-     width: 100%;
-    height: 100%;    
-    background-image: url(../img/login.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
-}
 .boxForm{
     background-color: rgba(91, 50, 86, 0.7);
     width:30%;
