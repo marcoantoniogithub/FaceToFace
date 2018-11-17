@@ -1,13 +1,21 @@
 package Servlet;
 
 public class Jogador {
-    
+
     private String nome;
     private String usuario;
     private String senha;
+    private String email;
 
-    public Jogador()
-    { }
+    public Jogador() {
+    }
+
+    public Jogador(String nome, String usuario, String senha, String email) {
+        this.nome = nome;
+        this.usuario = usuario;
+        this.senha = senha;
+        this.email = email;
+    }
 
     public String getNome() {
         return nome;
@@ -21,16 +29,7 @@ public class Jogador {
         return senha;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getEmail() {
+        return email;
     }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
 }

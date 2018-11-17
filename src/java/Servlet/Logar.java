@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author marcov
  */
 @WebServlet(name = "Logar", urlPatterns = {"/Logar"})
@@ -31,42 +31,43 @@ public class Logar extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
-    String array = "";
-    String usuario = "";
-    String senha = "";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        usuario = request.getParameter("n_usuario");
-        senha = request.getParameter("n_senha");
-        List<Jogador> result = le();
+        String usuario = request.getParameter("usuario");
+        String senha = request.getParameter("senha");
+
+        List<Jogador> listaDeUsuarios = le();
+
         boolean portaAcesso = false;
-        for(int i =0; i<result.size();i++){
-            System.out.println("pedindo acesso");
-            if((usuario.compareTo(result.get(i).getSenha())==0)&&(senha.compareTo(result.get(i).getNome())==0)){
+        for (Jogador jogador : listaDeUsuarios) {
+            if (usuario.equals(jogador.getUsuario()) && senha.equals(jogador.getSenha())) {
                 portaAcesso = true;
             }
         }
-        if(portaAcesso == false){
-            request.getRequestDispatcher("html/cadastro.html").forward(request, response);
-        }else{
-            request.getRequestDispatcher("html/jogo.html").forward(request, response);
+
+        if (!portaAcesso) {
+            request.getRequestDispatcher("cadastro.html").forward(request, response);
+        } else {
+            request.getRequestDispatcher("jogo.html").forward(request, response);
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -77,10 +78,10 @@ public class Logar extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -97,30 +98,26 @@ public class Logar extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    public List<Jogador> le() throws FileNotFoundException, IOException
-    {
-            List<Jogador> result = new ArrayList<>();
-            String caminhoDir = getServletContext().getRealPath("/WEB-INF");    
-            File arquivo = new File(caminhoDir,"jogador.txt");
-	    if(arquivo.exists())
-            {
-               String linha;
-               String cli = getServletContext().getRealPath("/WEB-INF/jogador.txt");    
-               BufferedReader b = new BufferedReader(
-                                      new InputStreamReader(
-                                          new FileInputStream(cli), Charset.forName("UTF-8").newDecoder()));
-               while(( linha = b.readLine()) != null)
-                  if ((linha != null) && (!linha.isEmpty()))
-                  {
-                    Jogador c = new Jogador();
+
+    public List<Jogador> le() throws IOException {
+        List<Jogador> result = new ArrayList<>();
+        String caminhoDir = getServletContext().getRealPath("/WEB-INF");
+        File arquivo = new File(caminhoDir, "jogador.txt");
+        if (arquivo.exists()) {
+            String linha;
+            String cli = getServletContext().getRealPath("/WEB-INF/jogador.txt");
+            BufferedReader b = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(cli), Charset.forName("UTF-8").newDecoder()));
+            while ((linha = b.readLine()) != null)
+                if (!linha.isEmpty()) {
+
                     String[] vetCliente = linha.split(";");
-                    c.setNome(vetCliente[0]);
-                    c.setUsuario(vetCliente[1]);
-                    c.setSenha(vetCliente[2]);
-                    result.add(c);
-                  }
-               b.close();
-            }
-            return result;
+                    Jogador jogador = new Jogador(vetCliente[0], vetCliente[1], vetCliente[3], vetCliente[2]);
+                    result.add(jogador);
+                }
+            b.close();
+        }
+        return result;
     }
 }
