@@ -55,7 +55,7 @@ public class Logar extends HttpServlet {
         if (!portaAcesso) {
             request.getRequestDispatcher("cadastro.html").forward(request, response);
         } else {
-            request.getRequestDispatcher("jogo.html").forward(request, response);
+            request.getRequestDispatcher("interface.html").forward(request, response);
         }
     }
 
