@@ -45,16 +45,17 @@
                         document.getElementById(i).style.backgroundColor="";
                     }
                 }
-            } else {
-                for(i = 1; i<3;i++){
-                    if(document.getElementById("p"+i).style.backgroundColor == "rgba(0, 0, 0, 0.5)"){
-                        document.getElementById("p"+i).style.backgroundColor="rgba(230,230,230,0.6)"
-                    }
-                }
             }
             document.getElementById(x).style.backgroundColor = "rgba(0,0,0,0.5)";
         }
         function pagJogo(){
+            var dificuldade;
+            for(i = 1; i<4;i++){
+                if(document.getElementById(i).style.backgroundColor == "rgba(0, 0, 0, 0.5)"){
+                    dificuldade = i;
+                }
+            }
+            localStorage.setItem("dificuldade", dificuldade);
             window.open('jogo.html','_blank');
             window.open('jogo.html','_self');
         }

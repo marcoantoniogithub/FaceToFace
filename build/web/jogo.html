@@ -6,7 +6,76 @@
     <link rel="stylesheet" href="css/estilo1.css">
     <link rel="stylesheet" href="css/restom.css">
     <script>
-    
+        var personagens = [
+            {"personagem":"0", "oculos":false, },
+            {"personagem":"1", "oculos":true, },
+            {"personagem":"2", "oculos":false, },
+            {"personagem":"3", "oculos":true, },
+            {"personagem":"4", "oculos":true, },
+            {"personagem":"5", "oculos":true, },
+            {"personagem":"6", "oculos":false, },
+            {"personagem":"7", "oculos":false, },
+            {"personagem":"8", "oculos":false, },
+            {"personagem":"9", "oculos":false, },
+            {"personagem":"10", "oculos":false, },
+            {"personagem":"11", "oculos":true, },
+            {"personagem":"12", "oculos":true, },
+            {"personagem":"13", "oculos":true, },
+            {"personagem":"14", "oculos":true, },
+            {"personagem":"15", "oculos":false, },
+            {"personagem":"16", "oculos":false, },
+            {"personagem":"17", "oculos":true, },
+            {"personagem":"18", "oculos":false, },
+            {"personagem":"19", "oculos":false, },
+            {"personagem":"20", "oculos":false, },
+            {"personagem":"21", "oculos":false, },
+            {"personagem":"22", "oculos":false, },
+            {"personagem":"23", "oculos":false, }
+        ]
+        function pergunta(x){
+            ItemPertence = true
+            if(x == 1){
+                if(personagens[personagemAdversario].oculos == true){
+                    alert("personagem tem");
+                    ItemPertence = false;
+                }
+                for(i = 0; i < personagens.length; i++){
+                    if(personagens[i].oculos == ItemPertence){
+                        document.getElementById(i).src = "img/erro.png";
+                    } 
+                }
+            }
+            voltar();
+            
+        }
+        function inicio(){
+            alert("jogador1 escolheu o personagem 1");
+            alert("jogador2 escolheu o personagem 2");
+            seuPersonagem = 0;
+            personagemAdversario = 1;
+            document.getElementById('escolhido').src = "img/"+seuPersonagem+".png"
+        }
+        function personagemSelecionado(x){
+            if(x == personagemAdversario){
+                alert("ganhou");
+            } else {
+                document.getElementById(x).src = "img/erro.png";
+                voltar();
+            }
+        }
+        function adivinhar(){
+            document.getElementById('tabuleiro').style.display = "none";
+            document.getElementById('personagens').style.display = "block";
+        }
+        function perguntar(){
+            document.getElementById('tabuleiro').style.display = "none";
+            document.getElementById('perguntas').style.display = "block";
+        }
+        function voltar(){
+            document.getElementById('perguntas').style.display = "none";
+            document.getElementById('personagens').style.display = "none";
+            document.getElementById('tabuleiro').style.display = "block";
+        }
     </script>
     <style>
         .background-game {
@@ -20,48 +89,134 @@
             background-color: navajowhite;
             display: block;
         }
+        .btn {
+            margin: 20px;
+            background-color: aliceblue;
+            border-radius: 10px;
+            width:100px;
+        }
+        .centralizar{
+            height: 100%;
+            text-align: center;
+        }
+        img{
+            width: 50px;
+        }
+        .personagem{
+            width: 100px;
+            margin: 5px;
+        }
+        #tabuleiro{
+            display: block;
+        }
+        #personagens {
+            display: none;
+        }
+        #perguntas{
+            display: none;
+        }
     </style>
 </head>
-<body>
+<body onload="inicio()">
     <div class="background-game">
         <div class="centralizar">
             <div class="boxForm">
-                <div class="col-dg-12">
-                    <div class="col-dg-9">
-                        <div class="col-dg-2">1</div>
-                        <div class="col-dg-2">2</div>
-                        <div class="col-dg-2">3</div>
-                        <div class="col-dg-2">4</div>
-                        <div class="col-dg-2">5</div>
-                        <div class="col-dg-2">6</div>
-
-                        <div class="col-dg-2">1</div>
-                        <div class="col-dg-2">2</div>
-                        <div class="col-dg-2">3</div>
-                        <div class="col-dg-2">4</div>
-                        <div class="col-dg-2">5</div>
-                        <div class="col-dg-2">6</div>
-
-                        <div class="col-dg-2">1</div>
-                        <div class="col-dg-2">2</div>
-                        <div class="col-dg-2">3</div>
-                        <div class="col-dg-2">4</div>
-                        <div class="col-dg-2">5</div>
-                        <div class="col-dg-2">6</div>
-
-                        <div class="col-dg-2">1</div>
-                        <div class="col-dg-2">2</div>
-                        <div class="col-dg-2">3</div>
-                        <div class="col-dg-2">4</div>
-                        <div class="col-dg-2">5</div>
-                        <div class="col-dg-2">6</div>
-
+                <div class="col-dg-12" id="tabuleiro">
+                    <div class="col-dg-10">
+                        <div class="col-dg-2 personagem"><img src="img/0.png" id="0"></div>
+                        <div class="col-dg-2 personagem"><img src="img/1.png" id="1"></div>
+                        <div class="col-dg-2 personagem"><img src="img/2.png" id="2"></div>
+                        <div class="col-dg-2 personagem"><img src="img/3.png" id="3"></div>
+                        <div class="col-dg-2 personagem"><img src="img/4.png" id="4"></div>
+                        <div class="col-dg-2 personagem"><img src="img/5.png" id="5"></div>
+                        <div class="linha"></div>
+                        <div class="col-dg-2 personagem"><img src="img/6.png" id="6"></div>
+                        <div class="col-dg-2 personagem"><img src="img/7.png" id="7"></div>
+                        <div class="col-dg-2 personagem"><img src="img/8.png" id="8"></div>
+                        <div class="col-dg-2 personagem"><img src="img/9.png" id="9"></div>
+                        <div class="col-dg-2 personagem"><img src="img/10.png" id="10"></div>
+                        <div class="col-dg-2 personagem"><img src="img/11.png" id="11"></div>
+                        <div class="linha"></div>
+                        <div class="col-dg-2 personagem"><img src="img/12.png" id="12"></div>
+                        <div class="col-dg-2 personagem"><img src="img/13.png" id="13"></div>
+                        <div class="col-dg-2 personagem"><img src="img/14.png" id="14"></div>
+                        <div class="col-dg-2 personagem"><img src="img/15.png" id="15"></div>
+                        <div class="col-dg-2 personagem"><img src="img/16.png" id="16"></div>
+                        <div class="col-dg-2 personagem"><img src="img/17.png" id="17"></div>
+                        <div class="linha"></div>
+                        <div class="col-dg-2 personagem"><img src="img/18.png" id="18"></div>
+                        <div class="col-dg-2 personagem"><img src="img/19.png" id="19"></div>
+                        <div class="col-dg-2 personagem"><img src="img/20.png" id="20"></div>
+                        <div class="col-dg-2 personagem"><img src="img/21.png" id="21"></div>
+                        <div class="col-dg-2 personagem"><img src="img/22.png" id="22"></div>
+                        <div class="col-dg-2 personagem"><img src="img/23.png" id="23"></div>
                     </div>
-                    <div class="col-dg-3">
-                        <div class="col-dg-12">personagem</div>
-                        <div class="col-dg-12">Perguntar</div>
-                        <div class="col-dg-12">adivinhar</div>
+                    <div class="col-dg-2 centralizar">
+                        <div class="btn"><img id="escolhido" src="" alt="">personagem</div>
+                        <div class="btn" onclick="perguntar()"><img src="img/interrogacao2.png" alt="">perguntar</div>
+                        <div class="btn" onclick="adivinhar()"><img src="img/lampada.png" alt="">adivinhar</div>
                     </div>
+                </div>
+                <div class="col-dg-12" id="personagens">
+                    <h1>Escolha um personagem</h1>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(0)"><img src="img/0.png" id="0"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(1)"><img src="img/1.png" id="1"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(2)"><img src="img/2.png" id="2"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(3)"><img src="img/3.png" id="3"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(4)"><img src="img/4.png" id="4"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(5)"><img src="img/5.png" id="5"></div>
+                    <div class="linha"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(6)"><img src="img/6.png" id="6"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(7)"><img src="img/7.png" id="7"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(8)"><img src="img/8.png" id="8"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(9)"><img src="img/9.png" id="9"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(10)"><img src="img/10.png" id="10"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(11)"><img src="img/11.png" id="11"></div>
+                    <div class="linha"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(12)"><img src="img/12.png" id="12"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(13)"><img src="img/13.png" id="13"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(14)"><img src="img/14.png" id="14"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(15)"><img src="img/15.png" id="15"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(16)"><img src="img/16.png" id="16"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(17)"><img src="img/17.png" id="17"></div>
+                    <div class="linha"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(18)"><img src="img/18.png" id="18"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(19)"><img src="img/19.png" id="19"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(20)"><img src="img/20.png" id="20"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(21)"><img src="img/21.png" id="21"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(22)"><img src="img/22.png" id="22"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(23)"><img src="img/23.png" id="23"></div>
+                    <div class="linha"></div>
+                    <div class="btn" onclick="voltar()"><img src="img/voltar.png" alt="">voltar</div>
+                </div>
+                <div id="perguntas">
+                    <h1>Qual pergunta deseja fazer?</h1>
+                    <div onclick="pergunta(1)">Ele usa oculos?</div>
+                    <div>Ele usa um chapéu?</div>
+                    <div>Os olhos dele está aberto?</div>
+                    <div>Os olhos dele está fechado?</div>
+                    <div>Ele têm o cabelo preto?</div>
+                    <div>Ele têm o cabelo castanho?</div>
+                    <div>Ele têm o cabelo loiro?</div>
+                    <div>Ele têm o cabelo grisalho?</div>
+                    <div>Ele têm cabelo curto?</div>
+                    <div>Ele têm cabelo longo?</div>
+                    <div>Ele é careca?</div>
+                    <div>Ele têm uma boca grande?</div>
+                    <div>Ele têm uma boca pequena?</div>
+                    <div>Ele têm uma barba?</div>
+                    <div>Ele têm um bigode?</div>
+                    <div>Ele têm um nariz longo?</div>
+                    <div>Ele têm um nariz largo?</div>
+                    <div>Ele têm lábios vermelho?</div>
+                    <div>Você consegue ver os dentes dele?</div>
+                    <div>Ele esta sorrindo?</div>
+                    <div>Ele esta serio?</div>
+                    <div>Ele é um homem?</div>
+                    <div>Ele é uma mulher?</div>
+                    <div>Ele têm pele clara?</div>
+                    <div>Ele têm pele escura?</div>
+                    <div class="btn" onclick="voltar()"><img src="img/voltar.png" alt="">voltar</div>
                 </div>
             </div>
         </div>

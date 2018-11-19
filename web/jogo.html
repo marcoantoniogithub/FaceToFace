@@ -7,36 +7,41 @@
     <link rel="stylesheet" href="css/restom.css">
     <script>
         var personagens = [
-            {"personagem":"1", "oculos":false, },
-            {"personagem":"2", "oculos":true, },
-            {"personagem":"3", "oculos":false, },
+            {"personagem":"0", "oculos":false, },
+            {"personagem":"1", "oculos":true, },
+            {"personagem":"2", "oculos":false, },
+            {"personagem":"3", "oculos":true, },
             {"personagem":"4", "oculos":true, },
             {"personagem":"5", "oculos":true, },
-            {"personagem":"6", "oculos":true, },
+            {"personagem":"6", "oculos":false, },
             {"personagem":"7", "oculos":false, },
             {"personagem":"8", "oculos":false, },
             {"personagem":"9", "oculos":false, },
             {"personagem":"10", "oculos":false, },
-            {"personagem":"11", "oculos":false, },
+            {"personagem":"11", "oculos":true, },
             {"personagem":"12", "oculos":true, },
             {"personagem":"13", "oculos":true, },
             {"personagem":"14", "oculos":true, },
-            {"personagem":"15", "oculos":true, },
+            {"personagem":"15", "oculos":false, },
             {"personagem":"16", "oculos":false, },
-            {"personagem":"17", "oculos":false, },
-            {"personagem":"18", "oculos":true, },
+            {"personagem":"17", "oculos":true, },
+            {"personagem":"18", "oculos":false, },
             {"personagem":"19", "oculos":false, },
             {"personagem":"20", "oculos":false, },
             {"personagem":"21", "oculos":false, },
             {"personagem":"22", "oculos":false, },
-            {"personagem":"23", "oculos":false, },
-            {"personagem":"24", "oculos":false, }
+            {"personagem":"23", "oculos":false, }
         ]
         function pergunta(x){
+            ItemPertence = true
             if(x == 1){
+                if(personagens[personagemAdversario].oculos == true){
+                    alert("personagem tem");
+                    ItemPertence = false;
+                }
                 for(i = 0; i < personagens.length; i++){
-                    if(personagens[i].oculos == true){
-                        document.getElementById(i+1).src = "img/erro.png";
+                    if(personagens[i].oculos == ItemPertence){
+                        document.getElementById(i).src = "img/erro.png";
                     } 
                 }
             }
@@ -46,10 +51,12 @@
         function inicio(){
             alert("jogador1 escolheu o personagem 1");
             alert("jogador2 escolheu o personagem 2");
-            jogadorAdversario = 2;
+            seuPersonagem = 0;
+            personagemAdversario = 1;
+            document.getElementById('escolhido').src = "img/"+seuPersonagem+".png"
         }
         function personagemSelecionado(x){
-            if(x == jogadorAdversario){
+            if(x == personagemAdversario){
                 alert("ganhou");
             } else {
                 document.getElementById(x).src = "img/erro.png";
@@ -116,69 +123,69 @@
             <div class="boxForm">
                 <div class="col-dg-12" id="tabuleiro">
                     <div class="col-dg-10">
+                        <div class="col-dg-2 personagem"><img src="img/0.png" id="0"></div>
                         <div class="col-dg-2 personagem"><img src="img/1.png" id="1"></div>
                         <div class="col-dg-2 personagem"><img src="img/2.png" id="2"></div>
                         <div class="col-dg-2 personagem"><img src="img/3.png" id="3"></div>
                         <div class="col-dg-2 personagem"><img src="img/4.png" id="4"></div>
                         <div class="col-dg-2 personagem"><img src="img/5.png" id="5"></div>
-                        <div class="col-dg-2 personagem"><img src="img/6.png" id="6"></div>
                         <div class="linha"></div>
+                        <div class="col-dg-2 personagem"><img src="img/6.png" id="6"></div>
                         <div class="col-dg-2 personagem"><img src="img/7.png" id="7"></div>
                         <div class="col-dg-2 personagem"><img src="img/8.png" id="8"></div>
                         <div class="col-dg-2 personagem"><img src="img/9.png" id="9"></div>
                         <div class="col-dg-2 personagem"><img src="img/10.png" id="10"></div>
                         <div class="col-dg-2 personagem"><img src="img/11.png" id="11"></div>
-                        <div class="col-dg-2 personagem"><img src="img/12.png" id="12"></div>
                         <div class="linha"></div>
+                        <div class="col-dg-2 personagem"><img src="img/12.png" id="12"></div>
                         <div class="col-dg-2 personagem"><img src="img/13.png" id="13"></div>
                         <div class="col-dg-2 personagem"><img src="img/14.png" id="14"></div>
                         <div class="col-dg-2 personagem"><img src="img/15.png" id="15"></div>
                         <div class="col-dg-2 personagem"><img src="img/16.png" id="16"></div>
                         <div class="col-dg-2 personagem"><img src="img/17.png" id="17"></div>
-                        <div class="col-dg-2 personagem"><img src="img/18.png" id="18"></div>
                         <div class="linha"></div>
+                        <div class="col-dg-2 personagem"><img src="img/18.png" id="18"></div>
                         <div class="col-dg-2 personagem"><img src="img/19.png" id="19"></div>
                         <div class="col-dg-2 personagem"><img src="img/20.png" id="20"></div>
                         <div class="col-dg-2 personagem"><img src="img/21.png" id="21"></div>
                         <div class="col-dg-2 personagem"><img src="img/22.png" id="22"></div>
                         <div class="col-dg-2 personagem"><img src="img/23.png" id="23"></div>
-                        <div class="col-dg-2 personagem"><img src="img/24.png" id="24"></div>
                     </div>
                     <div class="col-dg-2 centralizar">
-                        <div class="btn"><img id="escolhido" src="img/1.png" alt="">personagem</div>
+                        <div class="btn"><img id="escolhido" src="" alt="">personagem</div>
                         <div class="btn" onclick="perguntar()"><img src="img/interrogacao2.png" alt="">perguntar</div>
                         <div class="btn" onclick="adivinhar()"><img src="img/lampada.png" alt="">adivinhar</div>
                     </div>
                 </div>
                 <div class="col-dg-12" id="personagens">
                     <h1>Escolha um personagem</h1>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(1)"><img src="img/1.png" alt="1"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(2)"><img src="img/2.png" alt="2"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(3)"><img src="img/3.png" alt="3"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(4)"><img src="img/4.png" alt="4"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(5)"><img src="img/5.png" alt="5"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(6)"><img src="img/6.png" alt="6"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(0)"><img src="img/0.png" id="0"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(1)"><img src="img/1.png" id="1"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(2)"><img src="img/2.png" id="2"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(3)"><img src="img/3.png" id="3"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(4)"><img src="img/4.png" id="4"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(5)"><img src="img/5.png" id="5"></div>
                     <div class="linha"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(7)"><img src="img/7.png" alt="7"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(8)"><img src="img/8.png" alt="8"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(9)"><img src="img/9.png" alt="9"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(10)"><img src="img/10.png" alt="10"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(11)"><img src="img/11.png" alt="11"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(12)"><img src="img/12.png" alt="12"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(6)"><img src="img/6.png" id="6"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(7)"><img src="img/7.png" id="7"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(8)"><img src="img/8.png" id="8"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(9)"><img src="img/9.png" id="9"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(10)"><img src="img/10.png" id="10"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(11)"><img src="img/11.png" id="11"></div>
                     <div class="linha"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(13)"><img src="img/13.png" alt="13"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(14)"><img src="img/14.png" alt="14"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(15)"><img src="img/15.png" alt="15"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(16)"><img src="img/16.png" alt="16"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(17)"><img src="img/17.png" alt="17"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(18)"><img src="img/18.png" alt="18"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(12)"><img src="img/12.png" id="12"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(13)"><img src="img/13.png" id="13"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(14)"><img src="img/14.png" id="14"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(15)"><img src="img/15.png" id="15"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(16)"><img src="img/16.png" id="16"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(17)"><img src="img/17.png" id="17"></div>
                     <div class="linha"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(19)"><img src="img/19.png" alt="19"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(20)"><img src="img/20.png" alt="20"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(21)"><img src="img/21.png" alt="21"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(22)"><img src="img/22.png" alt="22"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(23)"><img src="img/23.png" alt="23"></div>
-                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(24)"><img src="img/24.png" alt="24"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(18)"><img src="img/18.png" id="18"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(19)"><img src="img/19.png" id="19"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(20)"><img src="img/20.png" id="20"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(21)"><img src="img/21.png" id="21"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(22)"><img src="img/22.png" id="22"></div>
+                    <div class="col-dg-2 personagem" onclick="personagemSelecionado(23)"><img src="img/23.png" id="23"></div>
                     <div class="linha"></div>
                     <div class="btn" onclick="voltar()"><img src="img/voltar.png" alt="">voltar</div>
                 </div>
