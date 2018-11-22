@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp /dependency/* Jogador
+web: java $JAVA_OPTS  --port $PORT applicacao.war
