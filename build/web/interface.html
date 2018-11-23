@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" type="text/css" href="css/estilo1.css">
+        <link rel="stylesheet" type="text/css" href="restom/estilo1.css">
     <style>
         .alinhamento {
             display: flex;
@@ -25,8 +26,8 @@
             background-color: rgba(230,230,230,0.8);
         }
         input[type=button]{
-            width:160px;
-            height: 80px;
+            width:130px;
+            height: 70px;
             font-size: 20px;
         }
         input[type=button]:hover{
@@ -71,8 +72,13 @@
                 <div onclick="mudarCor('2')" class="buttonDificuldade" id="2">MEDIO</div>
                 <div onclick="mudarCor('3')" class="buttonDificuldade" id="3">DIFICIL</div>
             </div>
-            <form id="interface" action="">
-                <input type="button" onclick="pagJogo()" class="buttonDificuldade" value="INICIAR JOGO">
+            <form id="interface" class="col-dg-12 col-dm-12" action="">
+                <div class="col-dg-6 col-dm-6">
+                    <input type="button" onclick="pagJogo()" class="buttonDificuldade" value="INICIAR JOGO">
+                </div>
+                <div class="col-dg-6 col-dm-6">
+                    <input type="button" onclick="window.open('rank.html','_self')" class="buttonDificuldade" value="RANKING">
+                </div>
             </form>
         </div>
    </div>
