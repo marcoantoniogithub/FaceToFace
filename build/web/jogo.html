@@ -2,48 +2,273 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Jogo</title>
+    <title>Facee</title>
     <link rel="stylesheet" href="css/estilo1.css">
     <link rel="stylesheet" href="css/restom.css">
     <script>
         var personagens = [
-            {"personagem":"0", "oculos":false, },
-            {"personagem":"1", "oculos":true, },
-            {"personagem":"2", "oculos":false, },
-            {"personagem":"3", "oculos":true, },
-            {"personagem":"4", "oculos":true, },
-            {"personagem":"5", "oculos":true, },
-            {"personagem":"6", "oculos":false, },
-            {"personagem":"7", "oculos":false, },
-            {"personagem":"8", "oculos":false, },
-            {"personagem":"9", "oculos":false, },
-            {"personagem":"10", "oculos":false, },
-            {"personagem":"11", "oculos":true, },
-            {"personagem":"12", "oculos":true, },
-            {"personagem":"13", "oculos":true, },
-            {"personagem":"14", "oculos":true, },
-            {"personagem":"15", "oculos":false, },
-            {"personagem":"16", "oculos":false, },
-            {"personagem":"17", "oculos":true, },
-            {"personagem":"18", "oculos":false, },
-            {"personagem":"19", "oculos":false, },
-            {"personagem":"20", "oculos":false, },
-            {"personagem":"21", "oculos":false, },
-            {"personagem":"22", "oculos":false, },
-            {"personagem":"23", "oculos":false, }
+            {"personagem":"0", "oculos":false, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":true, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":true, "sorrindo":true, "homem":true, "negro":true},
+            {"personagem":"1", "oculos":true, "moreno":false, "loiro":false, "castanho":true, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":false, "labiosVermelho":false, "verDentes":false, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"2", "oculos":false, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":true, "chapeu":false, "cabeloCurto":false, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":true, "homem":false, "negro":false},
+            {"personagem":"3", "oculos":true, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":true, "bigode":true, "narizLargo":false, "labiosVermelho":false, "verDentes":false, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"4", "oculos":true, "moreno":false, "loiro":false, "castanho":true, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":true, "homem":true, "negro":true},
+            {"personagem":"5", "oculos":true, "moreno":false, "loiro":false, "castanho":false, "grisalho":true, "careca":true, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":false, "bigode":true, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"6", "oculos":false, "moreno":false, "loiro":true, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":true, "bigode":true, "narizLargo":true, "labiosVermelho":true, "verDentes":false, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"7", "oculos":false, "moreno":false, "loiro":false   , "castanho":false, "grisalho":true, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"8", "oculos":false, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":true, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":true, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"9", "oculos":false, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":false, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":false, "labiosVermelho":true, "verDentes":false, "sorrindo":true, "homem":false, "negro":true},
+            {"personagem":"10", "oculos":false, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":false, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":false, "labiosVermelho":true, "verDentes":false, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"11", "oculos":true, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":true, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":true, "bigode":true, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"12", "oculos":true, "moreno":false, "loiro":true, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":true, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"13", "oculos":true, "moreno":false, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":true, "cabeloCurto":true, "bocaGrande":false, "barba":true, "bigode":true, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":true},
+            {"personagem":"14", "oculos":true, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":false, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"15", "oculos":false, "moreno":false, "loiro":false, "castanho":true, "grisalho":false, "careca":false, "olhosFechado":true, "chapeu":true, "cabeloCurto":true, "bocaGrande":false, "barba":true, "bigode":false, "narizLargo":false, "labiosVermelho":false, "verDentes":false, "sorrindo":true, "homem":true, "negro":false},
+            {"personagem":"16", "oculos":false, "moreno":true, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":false, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":true, "sorrindo":true, "homem":false, "negro":true},
+            {"personagem":"17", "oculos":true, "moreno":false, "loiro":false, "castanho":true, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":false, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"18", "oculos":false, "moreno":false, "loiro":false, "castanho":true, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":false, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":false, "labiosVermelho":true, "verDentes":false, "sorrindo":false, "homem":false, "negro":false},
+            {"personagem":"19", "oculos":false, "moreno":false, "loiro":false, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":true, "cabeloCurto":true, "bocaGrande":true, "barba":true, "bigode":true, "narizLargo":true, "labiosVermelho":true, "verDentes":false, "sorrindo":false, "homem":true, "negro":true},
+            {"personagem":"20", "oculos":false, "moreno":false, "loiro":true, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":true, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":true, "bigode":true, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"21", "oculos":false, "moreno":false, "loiro":true, "castanho":false, "grisalho":false, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":false, "bocaGrande":false, "barba":false, "bigode":false, "narizLargo":false, "labiosVermelho":true, "verDentes":false, "sorrindo":false, "homem":false, "negro":false},
+            {"personagem":"22", "oculos":false, "moreno":true , "loiro":false, "castanho":false, "grisalho":false, "careca":true, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":true, "barba":false, "bigode":false, "narizLargo":true, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false},
+            {"personagem":"23", "oculos":false, "moreno":false , "loiro":false, "castanho":false, "grisalho":true, "careca":false, "olhosFechado":false, "chapeu":false, "cabeloCurto":true, "bocaGrande":false, "barba":false, "bigode":true, "narizLargo":false, "labiosVermelho":false, "verDentes":false, "sorrindo":false, "homem":true, "negro":false}
         ]
         function pergunta(x){
-            ItemPertence = true
-            if(x == 1){
-                if(personagens[personagemAdversario].oculos == true){
-                    alert("personagem tem");
-                    ItemPertence = false;
-                }
-                for(i = 0; i < personagens.length; i++){
-                    if(personagens[i].oculos == ItemPertence){
-                        document.getElementById(i).src = "img/erro.png";
-                    } 
-                }
+            var ItemPertence = true;
+            switch(x){
+                case 1:
+                    if(personagens[personagemAdversario].oculos == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].oculos == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 2:
+                    if(personagens[personagemAdversario].chapeu == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    }else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].chapeu == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 3:
+                    if(personagens[personagemAdversario].olhosFechado == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].olhosFechado == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 4:
+                    if(personagens[personagemAdversario].moreno == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].moreno == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 5:
+                    if(personagens[personagemAdversario].castanho == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].castanho == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 6:
+                    if(personagens[personagemAdversario].loiro == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].loiro == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 7:
+                    if(personagens[personagemAdversario].grisalho == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].grisalho == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 8:
+                    if(personagens[personagemAdversario].cabeloCurto == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].cabeloCurto == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 9:
+                    if(personagens[personagemAdversario].careca == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].careca == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 10:
+                    if(personagens[personagemAdversario].bocaGrande == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].bocaGrande == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 11:
+                    if(personagens[personagemAdversario].barba == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].barba == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 12:
+                    if(personagens[personagemAdversario].bigode == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].bigode == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 13:
+                    if(personagens[personagemAdversario].narizLargo == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].narizLargo == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 14:
+                    if(personagens[personagemAdversario].labiosVermelho == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].labiosVermelho == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 15:
+                    if(personagens[personagemAdversario].verDentes == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].verDentes == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 16:
+                    if(personagens[personagemAdversario].verDentes == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].verDentes == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 17:
+                    if(personagens[personagemAdversario].homem == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].homem == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
+                case 18:
+                    if(personagens[personagemAdversario].negro == true){
+                        alert("O personagem adversario tem");
+                        ItemPertence = false;
+                    } else {
+                        alert("O personagem adversario não tem");
+                    }
+                    for(i = 0; i < personagens.length; i++){
+                        if(personagens[i].negro == ItemPertence){
+                            document.getElementById(i).src = "img/erro.png";
+                        } 
+                    }
+                    break;
             }
             voltar();
             
@@ -192,30 +417,23 @@
                 <div id="perguntas">
                     <h1>Qual pergunta deseja fazer?</h1>
                     <div onclick="pergunta(1)">Ele usa oculos?</div>
-                    <div>Ele usa um chapéu?</div>
-                    <div>Os olhos dele está aberto?</div>
-                    <div>Os olhos dele está fechado?</div>
-                    <div>Ele têm o cabelo preto?</div>
-                    <div>Ele têm o cabelo castanho?</div>
-                    <div>Ele têm o cabelo loiro?</div>
-                    <div>Ele têm o cabelo grisalho?</div>
-                    <div>Ele têm cabelo curto?</div>
-                    <div>Ele têm cabelo longo?</div>
-                    <div>Ele é careca?</div>
-                    <div>Ele têm uma boca grande?</div>
-                    <div>Ele têm uma boca pequena?</div>
-                    <div>Ele têm uma barba?</div>
-                    <div>Ele têm um bigode?</div>
-                    <div>Ele têm um nariz longo?</div>
-                    <div>Ele têm um nariz largo?</div>
-                    <div>Ele têm lábios vermelho?</div>
-                    <div>Você consegue ver os dentes dele?</div>
-                    <div>Ele esta sorrindo?</div>
-                    <div>Ele esta serio?</div>
-                    <div>Ele é um homem?</div>
-                    <div>Ele é uma mulher?</div>
-                    <div>Ele têm pele clara?</div>
-                    <div>Ele têm pele escura?</div>
+                    <div onclick="pergunta(2)">Ele usa um chapéu?</div>
+                    <div onclick="pergunta(3)">Os olhos dele está aberto?</div>
+                    <div onclick="pergunta(4)">Ele têm o cabelo preto?</div>
+                    <div onclick="pergunta(5)">Ele têm o cabelo castanho?</div>
+                    <div onclick="pergunta(6)">Ele têm o cabelo loiro?</div>
+                    <div onclick="pergunta(7)">Ele têm o cabelo grisalho?</div>
+                    <div onclick="pergunta(8)">Ele têm cabelo curto?</div>
+                    <div onclick="pergunta(9)">Ele é careca?</div>
+                    <div onclick="pergunta(10)">Ele têm uma boca grande?</div>
+                    <div onclick="pergunta(11)">Ele têm uma barba?</div>
+                    <div onclick="pergunta(12)">Ele têm um bigode?</div>
+                    <div onclick="pergunta(13)">Ele têm um nariz largo?</div>
+                    <div onclick="pergunta(14)">Ele têm lábios vermelho?</div>
+                    <div onclick="pergunta(15)">Você consegue ver os dentes dele?</div>
+                    <div onclick="pergunta(16)">Ele esta serio?</div>
+                    <div onclick="pergunta(17)">Ele é uma homem?</div>
+                    <div onclick="pergunta(18)">Ele têm pele negro?</div>
                     <div class="btn" onclick="voltar()"><img src="img/voltar.png" alt="">voltar</div>
                 </div>
             </div>
