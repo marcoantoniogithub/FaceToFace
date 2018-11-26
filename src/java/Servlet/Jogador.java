@@ -10,11 +10,10 @@ public class Jogador {
     public Jogador() {
     }
 
-    public Jogador(String nome, String usuario, String senha, String email) {
+    public Jogador(String nome, String usuario, String senha) {
         this.nome = nome;
         this.usuario = usuario;
         this.senha = senha;
-        this.email = email;
     }
 
     public String getNome() {
@@ -29,7 +28,4 @@ public class Jogador {
         return senha;
     }
 
-    public String getEmail() {
-        return email;
-    }
 }

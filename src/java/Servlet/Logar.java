@@ -45,17 +45,19 @@ public class Logar extends HttpServlet {
 
         List<Jogador> listaDeUsuarios = le();
 
-        boolean portaAcesso = false;
+        String portaAcesso = "false";
         for (Jogador jogador : listaDeUsuarios) {
             if (usuario.equals(jogador.getUsuario()) && senha.equals(jogador.getSenha())) {
-                portaAcesso = true;
+                request.setAttribute("nome",jogador.getNome());
+                portaAcesso = "true";
             }
         }
 
-        if (!portaAcesso) {
-            request.getRequestDispatcher("cadastro.html").forward(request, response);
+        if (portaAcesso.equals("false")) {
+            request.setAttribute("portaAcesso",portaAcesso);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
-            request.getRequestDispatcher("interface.html").forward(request, response);
+            request.getRequestDispatcher("interface.jsp").forward(request, response);
         }
     }
 
@@ -113,7 +115,7 @@ public class Logar extends HttpServlet {
                 if (!linha.isEmpty()) {
 
                     String[] vetCliente = linha.split(";");
-                    Jogador jogador = new Jogador(vetCliente[0], vetCliente[1], vetCliente[3], vetCliente[2]);
+                    Jogador jogador = new Jogador(vetCliente[0], vetCliente[1], vetCliente[2]);
                     result.add(jogador);
                 }
             b.close();
